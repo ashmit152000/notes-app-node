@@ -12,7 +12,7 @@ const addNotes = (title, body) => {
     //     return note.title === title
     // })
 
-    console.log(duplicateNotes)
+    debugger
 
     if(duplicateNotes.length === 0){
         notes.push({
@@ -40,7 +40,7 @@ const readNote = (title) => {
     try{
         const searchedNote = notes.filter((note) => note.title === title)
     console.log(chalk.inverse.green("Title: " + searchedNote[0].title + "\t Body: " + searchedNote[0].body))
-    }catch(e){
+    } catch(e) {
         console.log(chalk.inverse.red('No such note present'))
     }
     
