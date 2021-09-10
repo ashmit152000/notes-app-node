@@ -14,13 +14,22 @@ const products = {
     label: "Red Notebook",
     price: '$3', 
     stock: 201, 
-    salePrice: undefined
+    salePrice: 123
 }
 
-const {label, price} = products
+const {label: productLabel, price, salePrice, rating = 5} = products
 
-console.log(label)
+console.log(productLabel) 
 console.log(price)
+console.log(rating)
+
+const transaction = (type, {label, stock}) => {
+    console.log(type,label, stock)
+
+}
+
+transaction('order', products)
+
 
 
 
