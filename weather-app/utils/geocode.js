@@ -5,7 +5,7 @@ const getDataOnAddress = (address, callback) => {
     
     const urlOne = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + encodeURIComponent(address) + ".json?proximity=-74.70850,40.78375&access_token=pk.eyJ1IjoiYXNobWl0a2FzaHlhcDE1MDkiLCJhIjoiY2tybTR6aHNwMHNwdzJubDd2OG44NHltaCJ9.RMa2eNAXzwwNRbZ16nmTXQ"
     
-    request({url: urlOne, json: true}, (error, response) => {
+    request({urlOne, json: true}, (error, response) => {
         if(error){
             console.log(chalk.red.inverse('Unable to connect to the internet'))
         } else if (response.body.features.length === 0 ) {

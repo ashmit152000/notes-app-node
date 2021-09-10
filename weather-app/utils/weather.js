@@ -3,7 +3,7 @@ const chalk = require('chalk')
 
 const weatherData = (lat,lon, place_name) => {
     const url = 'http://api.weatherstack.com/current?access_key=fe06a03b0aa997abfaffe7cd3ec47494&query='+ lat  + "," + lon
-        request({url: url, json: true}, (error, responseTwo) => {
+        request({url, json: true}, (error, responseTwo) => {
             if(error){
                 console.log('Unable to fetch data')
             }else if(responseTwo.body.error){
