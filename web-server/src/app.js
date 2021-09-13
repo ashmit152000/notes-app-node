@@ -1,20 +1,30 @@
 const express = require('express')
-
+const path = require('path')
 const app = express()
 
+const publicDir = path.join(__dirname, '../public')
+app.set('view engine', 'hbs') // To setup handlebars
+app.use(express.static(publicDir))
+
 app.get('', (req, res) => {
-    res.send('<h1>Hello, Express</h1>') 
+    res.render('index', {
+        title: "Weather App",
+        name:  "Ashmit"
+    }) 
 })
 
-app.get('/about', (req, res) => {
-    res.send({
-        name: "Ashmit", 
-        age: 20
-    })
-})
+// app.get('/about', (req, res) => {
+//     res.send({
+//         name: "Ashmit", 
+//         age: 20
+//     })
+// })
 
 app.get('/weather', (req, res) => {
-    res.send('This is the weather app')
+    res.send({
+        forecast: "Sunny",
+        location: "New Delhi, India"
+    })
 })
 
 
