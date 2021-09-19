@@ -18,6 +18,8 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     }
 
     const db = client.db(databaseName)
+    //   Find method
+
 
     // db.collection('users').findOne({ _id: ObjectId("61441bf612d432d24ebf45c4") }, (error, user) => {
     //     if(error){
@@ -28,30 +30,32 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     //     console.log(user)
     // }) 
 
-    db.collection('users').find({
-        age: 21
-    }).toArray((error, user) => {
-        if(error){
-            return console.log('Unable to get')
-        }
+   
 
-        console.log(user)
-    })
+    // db.collection('users').find({
+    //     age: 21
+    // }).toArray((error, user) => {
+    //     if(error){
+    //         return console.log('Unable to get')
+    //     }
 
-    db.collection('users').find({
-        age: 21
-    }).count((error, count) => {
-        if(error){
-            return console.log('Unable to get')
-        }
+    //     console.log(user)
+    // })
 
-        console.log(count)
-    })
+    // db.collection('users').find({
+    //     age: 21
+    // }).count((error, count) => {
+    //     if(error){
+    //         return console.log('Unable to get')
+    //     }
+
+    //     console.log(count)
+    // })
 
     
 
 
-
+    // Insert method 
 
     // db.collection('users').insertOne({
     //     name: "Ashmit",
@@ -84,5 +88,56 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     //     }
     //     console.log(result)
     // })
+
+
+    // Update Documents
+
+    // db.collection('users').updateOne({
+    //     _id: ObjectId('61442e9b39c471dc06da51c9')
+    // }, {
+    //         // $set: {
+    //         //     name: "Anirudh"
+
+    //         // }
+
+    //         $inc: {
+    //             age: 1
+    //         }
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+
+    // db.collection('users').updateMany({
+    //     age: 21
+    // },{
+    //     $inc: {
+    //         age: 1
+    //     }
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+    // Delete the documents
+
+    // db.collection('users').deleteOne({
+    //     age: 22
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+    db.collection('users').deleteMany({
+        age: 22
+    }).then((result) => {
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
+    })
 
 })
