@@ -1,11 +1,14 @@
 const express = require('express')
 const router = new express.Router()
 const Task = require('../db/models/task')
+const User = require('../db/models/user')
 
 router.post('/tasks', async (req, res) => {
     console.log(req.body)
-    const task = new Task(req.body)
     try {
+        
+        const task = new Task(req.body)
+   
         await task.save()
         res.status(201).send(task)
     } catch(error){
@@ -49,7 +52,10 @@ router.patch('/tasks/:id', async (req,res) => {
     }
 
     try {
-        const task = await Task.findByIdAndUpdate(req.params.id, req.body,{new: true, runValidators: true})
+        const task = await Task.findById(req.params.id)
+        updates.forEach((update) => task[update] = req.body[update])
+        // const task = await Task.findByIdAndUpdate(req.params.id, req.body,{new: true, runValidators: true})
+        await task.save()
 
         if(!task) {
             return res.status(404).send({error: "Task not found"})
