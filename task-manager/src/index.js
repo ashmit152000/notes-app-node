@@ -27,18 +27,18 @@ app.use(taskRoute)
 
 // With Middleware: New request -> do something -> run router handler
 
-const myFunction = async () => {
-    const token = jwt.sign({
-        _id: "abc123"
-    }, "thisisashmitrajpathak")
+// const myFunction = async () => {
+//     const token = jwt.sign({
+//         _id: "abc123"
+//     }, "thisisashmitrajpathak")
 
-    console.log(token)
-    const data = jwt.verify(token,"thisisashmitrajpathak")
-    console.log(data)
+//     console.log(token)
+//     const data = jwt.verify(token,"thisisashmitrajpathak")
+//     console.log(data)
 
-}
+// }
 
-myFunction()
+// myFunction()
 
 
 

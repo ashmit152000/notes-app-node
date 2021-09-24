@@ -25,14 +25,9 @@ router.post('/users', async  (req, res) => {
     
 })
 
-router.get('/users', auth , async (req, res) => {
+router.get('/users/me', auth , async (req, res) => {
     
-    try{
-        const user =  await User.find({})
-        res.status(201).send(user)
-    }catch(error){
-        res.status(400).send(error)
-    }
+   res.send(req.user)
 }) 
 
 router.get('/users/:id', async (req, res) => {
